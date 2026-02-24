@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- H2 in memory -->
+        <property name="connection.driver_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"/>
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- auto create tables -->
+        <property name="hbm2ddl.auto">create-drop</property>
+
+        <!-- show SQL so you can see what Hibernate generates -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <mapping class="com.test.Contact"/>
+    </session-factory>
+</hibernate-configuration>
