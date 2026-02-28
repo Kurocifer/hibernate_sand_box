@@ -21,13 +21,13 @@ public class Main {
             session.persist(contact);
 
             session.getTransaction().commit();
-            System.out.println("Saved contact with phone: " + contact.getPhone());
+            System.out.println(contact);
         }
 
         // --- LOAD ---
         try (Session session = sessionFactory.openSession()) {
             Contact contact = session.get(Contact.class, 1L);
-            System.out.println("Loaded contact with phone: " + contact.getPhone());
+            System.out.println(contact);
         }
 
         // --- UPDATE ---
@@ -38,13 +38,13 @@ public class Main {
             contact.setPhone(new PhoneNumber("+441234567890"));
 
             session.getTransaction().commit();
-            System.out.println("Updated phone to: " + contact.getPhone());
+            System.out.println(contact);
         }
 
         // --- VERIFY UPDATE ---
         try (Session session = sessionFactory.openSession()) {
             Contact contact = session.get(Contact.class, 1L);
-            System.out.println("Final phone: " + contact.getPhone());
+            System.out.println(contact);
         }
 
         // --- TEST VALIDATION ---
